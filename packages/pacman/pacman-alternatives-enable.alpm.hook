@@ -1,0 +1,10 @@
+[Trigger]
+Type = Path
+Operation = Install
+Target = @TERMUX_PREFIX_TARGET@/share/pacman-alternatives/*.alt
+
+[Action]
+Description = Automatic enabling alternatives...
+When = PostTransaction
+Exec = @TERMUX_PREFIX@/share/libalpm/scripts/run-pacman-alternatives enable
+NeedsTargets

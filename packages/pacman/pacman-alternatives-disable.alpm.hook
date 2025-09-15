@@ -1,0 +1,10 @@
+[Trigger]
+Type = Path
+Operation = Remove
+Target = @TERMUX_PREFIX_TARGET@/share/pacman-alternatives/*.alt
+
+[Action]
+Description = Automatic disabling alternatives...
+When = PreTransaction
+Exec = @TERMUX_PREFIX@/share/libalpm/scripts/run-pacman-alternatives disable
+NeedsTargets

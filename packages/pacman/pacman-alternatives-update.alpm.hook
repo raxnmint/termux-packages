@@ -1,0 +1,10 @@
+[Trigger]
+Type = Path
+Operation = Upgrade
+Target = @TERMUX_PREFIX_TARGET@/share/pacman-alternatives/*.alt
+
+[Action]
+Description = Automatic updating alternatives...
+When = PostTransaction
+Exec = @TERMUX_PREFIX@/share/libalpm/scripts/run-pacman-alternatives update
+NeedsTargets
