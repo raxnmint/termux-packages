@@ -38,6 +38,7 @@ termux_setup_build_python() {
 		export TERMUX_BUILD_PYTHON_DIR=$_PYTHON_FOLDER
 
 		if [[ ! -d "$_PYTHON_FOLDER" ]]; then
+			local LAST_PWD="$(pwd)"
 			termux_download \
 				"$_PYTHON_SRCURL" "python-$_PYTHON_VERSION.tar.xz" "$_PYTHON_SHA256"
 			mkdir "$_PYTHON_FOLDER"
@@ -71,7 +72,7 @@ termux_setup_build_python() {
 					--prefix="$_PYTHON_FOLDER/host-build-prefix"
 			env -i \
 				make -j "$(nproc)" install
-			cd ../..
+			cd "$LAST_PWD"
 		fi
 		# Add our own built python to path
 		export PATH="$_PYTHON_FOLDER/host-build-prefix/bin:$PATH"
