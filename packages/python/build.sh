@@ -83,6 +83,7 @@ termux_step_pre_configure() {
 	export LDFLAGS+=" -landroid-posix-semaphore"
 
 	export LIBCRYPT_LIBS="-lcrypt"
+	autoreconf -fi
 }
 
 termux_step_post_make_install() {
