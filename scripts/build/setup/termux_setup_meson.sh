@@ -28,7 +28,7 @@ termux_setup_meson() {
 		mv "$MESON_TMP_FOLDER" "$MESON_FOLDER"
 	fi
 	TERMUX_MESON="${MESON_FOLDER}/meson.py"
-	if [ "$TERMUX_ON_DEVICE_BUILD" = "false" ] && [ "$TERMUX_PACKAGE_LIBRARY" = "glibc" ]; then
+	if [ "$TERMUX_ON_DEVICE_BUILD" = "false" ]; then
 		TERMUX_MESON="/usr/bin/python3 ${TERMUX_MESON}"
 	fi
 	TERMUX_MESON_CROSSFILE=$TERMUX_PKG_TMPDIR/meson-crossfile-$TERMUX_ARCH.txt
