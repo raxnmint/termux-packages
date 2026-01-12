@@ -17,7 +17,8 @@ fi
 
 termux_step_make() {
 	termux_setup_nodejs
-	npm install
+	npm install --frozen-lockfile
+	npm run bundle
 	python -m build --wheel --no-isolation
 }
 
