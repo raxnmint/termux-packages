@@ -13,6 +13,6 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 "
 
 termux_step_pre_configure() {
-    LDFLAGS+=" -Wl,--copy-dt-needed-entries"
-    termux_setup_meson
+	LDFLAGS+=" -Wl,--copy-dt-needed-entries"
+	termux_setup_meson
 }
