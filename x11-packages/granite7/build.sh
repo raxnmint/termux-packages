@@ -14,18 +14,18 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 
 termux_step_pre_configure() {
 	LDFLAGS+=" -Wl,--copy-dt-needed-entries"
-	
+
 	# Use host glib-compile-resources instead of target version
 	local _GLIB_COMPILE_RESOURCES
-	if command -v glib-compile-resources > /dev/null 2>&1; then
+	if command -v glib-compile-resources >/dev/null 2>&1; then
 		_GLIB_COMPILE_RESOURCES=$(command -v glib-compile-resources)
 	else
 		termux_error_exit "glib-compile-resources not found on host system. Please install glib2 development tools."
 	fi
-	
+
 	TERMUX_MESON_CROSSFILE_EXTRA="exe_wrapper = ['env']
 [binaries]
 glib-compile-resources = '${_GLIB_COMPILE_RESOURCES}'"
-	
+
 	termux_setup_meson
 }
